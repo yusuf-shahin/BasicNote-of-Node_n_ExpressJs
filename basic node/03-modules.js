@@ -20,3 +20,5 @@ const data = require("./06-alternative-flavor");
 //* mind-grenede :-
 // require("./07-mind-grenade"); //# the sum is : 15
 //! What the reason ? we dont export the module from "./07-mind-grenade"... how can we find them ?
+
+//? If we have a function inside of module that we invoke , that code will run , even though we dont assain it in a varible

@@ -1,10 +1,12 @@
-const os = require('os');
+//* build in module in node.js
+const os = require("os"); //# operating system
+// console.log(os);
 
-// info about current user
+//* info about current user
 const user = os.userInfo();
 console.log(user);
 
-// method returns the system uptime in seconds
+// // method returns the system uptime in seconds
 console.log(`The System Uptime is ${os.uptime()} seconds`);
 
 const currentOS = {
