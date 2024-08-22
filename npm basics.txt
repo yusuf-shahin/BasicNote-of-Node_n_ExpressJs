@@ -1,0 +1,35 @@
+*** npm init -y --> [ package.json ]file is created .
+
+>>> if we install a new package, the package the packege store as "dependencies"
+
+==========================================================
+
+*** npm i lodash --> [ package.json ] --> "dependencies": {
+    "lodash": "^4.17.21"
+  } && also created [ package-lock.json ] file .
+
+>>> in node_module folder all dependencie are store .
+
+===========================================================
+
+*** npm i nodemon -D --> in [ package.json ] file --> "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+
+=========================================================
+
+*** [ package.json ] file -->  "scripts": {
+    "start": "node app.js"
+  }, 
+
+>>> in terminal , npm start === node app.js
+
+=========================================================
+
+*** [ package.json ] file --> "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+
+
+>>> in terminal , npm run dev === nodemon app.js
