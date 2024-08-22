@@ -33,3 +33,27 @@
 
 
 >>> in terminal , npm run dev === nodemon app.js
+
+==========================================================
+
+*** in tarmenal, npm uninstall [ package name ] --> to remove the package
+
+
+the basic of packege json url :
+
+https://nodesource.com/blog/the-basics-of-package-json-in-node-js-and-npm/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
