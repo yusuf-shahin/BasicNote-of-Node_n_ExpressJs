@@ -4,7 +4,14 @@ const os = require("os"); //# operating system
 
 //* info about current user
 const user = os.userInfo();
-console.log(user);
+console.log(user); //! -->
+// {
+//   uid: -1,
+//   gid: -1,
+//   username: 'DFIT',
+//   homedir: 'C:\\Users\\DFIT',
+//   shell: null
+// }
 
 // // method returns the system uptime in seconds
 console.log(`The System Uptime is ${os.uptime()} seconds`);
