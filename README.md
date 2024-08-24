@@ -1,4 +1,4 @@
-# Basic Notes of Node & Express JS .
+# Basic Notes of node.jS .
 
 - In this repository, I’ve documented my journey through learning Node.js and Express.js by compiling a comprehensive tutorial.
 
@@ -34,9 +34,11 @@ If we console.log(module), we find that is our terminal :-
 }
 ```
 
-- In module we receive "export" obj
+- In module we receive _"export"_ as obj
+- using **module.exports** we add the value of exports.
+- using **require** method to import the module as obj.
 
-##### How we use export in node ?
+##### How we use modules in node ?
 
 - First we create three basic js file
 
@@ -175,20 +177,20 @@ console.log(currentOS);
 ```js
 const path = require("path");
 
-console.log(path.sep); //# ---> \
+console.log(path.sep); //# ---> "\"
 
 const filePath = path.join("/content/", "subfolder", "test.txt");
-console.log(filePath); //# ---> \content\subfolder\test.txt
+console.log(filePath); //# ---> "\content\subfolder\test.txt"
 
 const base = path.basename(filePath);
 console.log(base); //# ---> test.txt
 
 const absolute = path.resolve(__dirname, "content", "subfolder", "test.txt");
 console.log(absolute);
-//# ---> C:\Users\DFIT\Desktop\Node Basics\concept of node.js\content\subfolder\test.txt
+//# ---> "C:\Users\DFIT\Desktop\Node Basics\concept of node.js\content\subfolder\test.txt"
 ```
 
-## Node.js as a File Server
+## Node.js as a File Server ("fs") :-
 
 #### The Node.js file system module allows you to work with the file system on your computer.
 
@@ -221,12 +223,53 @@ writeFileSync(
   //# create the file on this path
   "./content/result-sync.txt",
   //# write text(value) on that file
-  `Here is the result : ${first}, ${second}`,
-  //# add --> Here is the result :
-  { flag: "a" }
+  `Here is the result : ${first}, ${second}`
 );
 // console.log('done with this task')
 // console.log('starting the next one')
-
-//? sync approach --> "start" --> {rading file --> writing file} --> "done with this task" --> "starting the next one"
 ```
+
+- sync approach --> "start" --> {rading file --> writing file} --> "done with this task" --> "starting the next one"
+
+##### fs-async approach
+
+```js
+//* destructuring from "fs" (async)
+const { readFile, writeFile } = require("fs");
+
+console.log("start");
+
+//* async file in callBack
+readFile("./content/first.txt", "utf8", (err, result) => {
+  if (err) {
+    console.log(err);
+    return;
+  }
+  // console.log(result); //# result --> "./content/first.txt", "utf8"
+
+  const first = result;
+
+  //* callBack func inside callBack func :-
+  readFile("./content/second.txt", "utf8", (err, result) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    const second = result;
+    writeFile(
+      "./content/result-async.txt",
+      `Here is the result : ${first}, ${second}`,
+      (err, result) => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        console.log("done with this task");
+      }
+    );
+  });
+});
+console.log("starting next task");
+```
+
+- async approach --> "start" --> "starting next task" --> {rading file --> writing file} --> "done with this task".

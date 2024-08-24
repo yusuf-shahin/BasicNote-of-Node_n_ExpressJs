@@ -1,4 +1,4 @@
-//* destructuring from "fs" (sync)
+//* destructuring from "fs"
 const { readFileSync, writeFileSync } = require("fs"); //# file-system
 console.log("start");
 
