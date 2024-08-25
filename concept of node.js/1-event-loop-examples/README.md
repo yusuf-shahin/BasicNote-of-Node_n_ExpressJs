@@ -4,7 +4,7 @@
 
 - The event loop is what **allows Node.js to perform non-blocking I/O operations** — despite the fact that a single JavaScript thread is used by default — by offloading operations to the system kernel whenever possible.
 
-- _[In details]_(https://medium.com/@mmoshikoo/event-loop-in-nodejs-visualized-235867255e81)
+- [_In details_](https://medium.com/@mmoshikoo/event-loop-in-nodejs-visualized-235867255e81)
 
 ##### 1-read-file.js
 
