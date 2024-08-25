@@ -8,7 +8,7 @@ const second = readFileSync("./content/second.txt", "utf8");
 //# fs.readFileSync() method, we can synchronously read files. It is used to read the file and return its content.
 
 //* read the file from those folder
-console.log(first, second);
+// console.log(first, second);
 
 //* create a file and write text on it
 writeFileSync(

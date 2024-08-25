@@ -1,13 +1,16 @@
-const { readFile, writeFile } = require('fs')
+const { readFile, writeFile } = require("fs");
 
-console.log('started a first task')
+console.log("started a first task");
 // CHECK FILE PATH!!!!
-readFile('./content/first.txt', 'utf8', (err, result) => {
+readFile("../content/first.txt", "utf8", (err, result) => {
   if (err) {
-    console.log(err)
-    return
+    console.log(err);
+    return;
   }
-  console.log(result)
-  console.log('completed first task')
-})
-console.log('starting next task')
+  console.log(result);
+  console.log("completed first task");
+});
+console.log("starting next task");
+
+//* in console we see :-
+//? "started a first task" --> "starting next task" --> "completed first task"
