@@ -1,24 +1,24 @@
-# Basic Notes of node.jS .
+# Basic Notes of node.js .
 
 - In this repository, I’ve documented my journey through learning Node.js and Express.js by compiling a comprehensive tutorial.
 
 ### The importent shortkey of Node :-
 
 - GLOBALS === NO WINDOW !!!! There is no window object in node .
-- **dirname - console.log(**dirname) -> path to current directory .
-- **filename - console.log(**dirname) -> file name .
+- **dirname - console.log(dirname)** -> path to current directory .
+- **filename - console.log(dirname)** -> file name .
 - require - function to use modules (CommonJS) .
 - module - info about current module (file) .
 - process - info about env where the program is being executed .
 
-### Modules in node .
+### Modules in node js :-
 
 ##### What is module ?
 
 - Modules in Node.js allow you to encapsulate code into separate files, making it reusable and maintainable. Each module can export only what is necessary, keeping the rest private and hidden. This helps organize your code and reduces potential conflicts.
 - Every file is module (by default) .
 
-If we console.log(module), we find that is our terminal :-
+If we **console.log(module)** , we find that is our terminal :-
 
 ```js
 {
@@ -36,7 +36,8 @@ If we console.log(module), we find that is our terminal :-
 
 - In module we receive _"export"_ as obj
 - using **module.exports** we add the value of exports.
-- using **require** method to import the module as obj.
+- using **require()** method to import the module as obj.
+- _- in nodejs we use require instead of import method ._
 
 ##### How we use modules in node ?
 
@@ -51,9 +52,8 @@ const secret = "SUPER SECRET";
 const john = "john";
 const peter = "peter";
 
-// console.log(module);
+console.log(module.exports); //# --> {}
 
-//* export the varible globaly by using obj...
 module.exports = { john, peter };
 
 // console.log(module.exports); --->
@@ -64,10 +64,10 @@ utils.js
 
 ```js
 //* defaault export
-const hello = (name) => {
-  console.log(`Hello there ${name}`);
-};
-export default module.exports = hello;
+// const hello = (name) => {
+//   console.log(`Hello there ${name}`);
+// };
+// export default module.exports = hello;
 
 //* same thing in different way
 module.exports = (name) => {
@@ -115,7 +115,7 @@ const names = require("./04-names");
 // const {john, peter} = require("./04-names");
 
 const sayHello = require("./05-utils");
-console.log(sayHello); //# [Function: sayHi]
+console.log(sayHello); //# //# [Function (anonymous)]
 
 const data = require("./06-alternative-flavor");
 // console.log(data);
@@ -135,8 +135,6 @@ sayHello(pName); //# hello there bob
 
 //? If we have a function inside of module that we invoke , that code will run , even though we dont assain it in a varible
 ```
-
-- in nodejs we use require instead of import method .
 
 ## What is os module ?
 
@@ -170,7 +168,7 @@ const currentOS = {
 console.log(currentOS);
 ```
 
-##### path-module :-
+##### what is path-module ?
 
 - The Path module provides a way of working with directories and file paths.
 
@@ -204,7 +202,9 @@ Common use for the File System module:
 - Delete files
 - Rename files
 
-##### fs-sync approach
+##### fs-sync approach :-
+
+- [What is Node JS fs.readFileSync() Method ?](https://www.geeksforgeeks.org/node-js-fs-readfilesync-method/)
 
 ```js
 //* destructuring from "fs" (sync)
@@ -214,6 +214,7 @@ console.log("start");
 //* in "subfolder" I already create two files, first.txt and second.txt
 const first = readFileSync("./content/first.txt", "utf8");
 const second = readFileSync("./content/second.txt", "utf8");
+//# fs.readFileSync() method, we can synchronously read files. It is used to read the file and return its content.
 
 //* read the file from those folder
 console.log(first, second);
@@ -229,9 +230,11 @@ writeFileSync(
 // console.log('starting the next one')
 ```
 
-- sync approach --> "start" --> {rading file --> writing file} --> "done with this task" --> "starting the next one"
+- _sync approach --> "start" --> {rading file --> writing file} --> "done with this task" --> "starting the next one"_
 
-##### fs-async approach
+##### fs-async approach :-
+
+- [What is Node JS fs.readFile() Method ?](https://www.geeksforgeeks.org/node-js-fs-readfile-method/)
 
 ```js
 //* destructuring from "fs" (async)
@@ -272,4 +275,48 @@ readFile("./content/first.txt", "utf8", (err, result) => {
 console.log("starting next task");
 ```
 
-- async approach --> "start" --> "starting next task" --> {rading file --> writing file} --> "done with this task".
+- _async approach --> "start" --> "starting next task" --> {rading file --> writing file} --> "done with this task"._
+
+## In node.js HTTP modules :-
+
+- Node.js has a built-in module called HTTP, which allows Node.js to transfer data over the Hyper Text Transfer Protocol (HTTP).
+- The HTTP module creates an HTTP server that listens to server ports and gives a response back to the client.
+
+- [HTTP in details](https://mirzaleka.medium.com/a-detailed-look-into-the-node-js-http-module-680eb5e4548a)
+
+```js
+//* Base module
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+  //# create my first server...
+  // res.write("Welcome, this is my first web page by using node");
+  // res.end();
+  //# routing different different by page in server...
+  if (req.url === "/") {
+    res.end("Welcome to our home page");
+  } else if (req.url === "/about") {
+    res.end("Hello my name is yusuf Shahin");
+  } else if (req.url === "/address") {
+    res.end("9 no. Nobipur union, Senbag, Noakhali");
+  } else {
+    //! if url are wrong...
+    res.end(`
+    <h1>Oops!</h1>
+    <p>We can't seem to find the page you are looking for</p>
+    <a href="/">back home</a>
+    `);
+  }
+});
+
+server.listen(1997);
+// http://localhost:1997/
+```
+
+##### Creating Servers:
+
+- The HTTP module allows you to create a server using the http.createServer() method, which listens for incoming requests and handles them using a callback function.
+
+##### Handling Requests:
+
+- You can handle HTTP requests and responses by accessing the request and response objects within the callback function of createServer(). The request object contains data from the client, while the response object is used to send data back.

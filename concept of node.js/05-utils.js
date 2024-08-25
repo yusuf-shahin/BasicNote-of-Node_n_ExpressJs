@@ -2,7 +2,7 @@
 // const hello = (name) => {
 //   console.log(`Hello there ${name}`);
 // };
-// export default
+// export the function name
 // module.exports = hello;
 
 //* same thing in different way

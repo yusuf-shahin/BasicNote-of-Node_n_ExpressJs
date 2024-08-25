@@ -5,6 +5,7 @@ console.log("start");
 //* in "subfolder" I already create two files, first.txt and second.txt
 const first = readFileSync("./content/first.txt", "utf8");
 const second = readFileSync("./content/second.txt", "utf8");
+//# fs.readFileSync() method, we can synchronously read files. It is used to read the file and return its content.
 
 //* read the file from those folder
 console.log(first, second);

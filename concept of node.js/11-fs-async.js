@@ -5,6 +5,9 @@ console.log("start");
 
 //* async file in callBack
 readFile("./content/first.txt", "utf8", (err, result) => {
+  //# What is readFile in node js ?
+  //// https://www.geeksforgeeks.org/node-js-fs-readfile-method/
+
   if (err) {
     console.log(err);
     return;

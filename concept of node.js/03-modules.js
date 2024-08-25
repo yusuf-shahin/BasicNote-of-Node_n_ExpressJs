@@ -7,7 +7,7 @@ const names = require("./04-names");
 // const {john, peter} = require("./04-names");
 
 const sayHello = require("./05-utils");
-console.log(sayHello); //# [Function: sayHi]
+// console.log(sayHello); //# [Function (anonymous)]
 
 const data = require("./06-alternative-flavor");
 // console.log(data);
