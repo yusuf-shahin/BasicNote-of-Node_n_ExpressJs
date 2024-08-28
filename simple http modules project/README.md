@@ -46,10 +46,12 @@ const server = http.createServer((req, res) => {
 **listen the server**
 `server.listen(5000);`
 
-**the code**
+- **the code**
+
 ![Relative](./image/code.jfif)
 
-**the browser**
+- **the browser**
+
 ![Relative](./image/browser.jfif)
 
 - **_What is the problem ?_**
@@ -69,6 +71,8 @@ const server = http.createServer((req, res) => {
 
 **IN Network**
 ![Relative](./image/error-file.jpeg)
+
+### The solution :-
 
 **So we will have to request all the file and assign them in varible**
 
@@ -122,10 +126,11 @@ else {
 }
 ```
 
-**In Network**
+- **In Network**
+
 ![Relative](./image/ok-file.jpeg)
 
-#### The whole code is :-
+### The whole code of **server.js** is :-
 
 ```js
 const http = require("http");
@@ -190,3 +195,6 @@ const server = http.createServer((req, res) => {
 
 server.listen(5000);
 ```
+
+- in terminal **node server.js**
+- **localhost:500**

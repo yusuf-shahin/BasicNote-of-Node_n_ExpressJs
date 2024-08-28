@@ -1,10 +1,16 @@
-*** npm init -y --> [ package.json ]file is created .
+*** npm init -y --> [package.json] is created . 
+  ( note : [packagelock.json] file is not created in that time )
 
 >>> if we install a new package, the package the packege store as "dependencies"
 
 ==========================================================
 
-*** npm i lodash --> [ package.json ] --> "dependencies": {
+*** if we want to install new package --> npm i [packege name]
+
+for example :-
+*** npm i lodash
+
+## npm i lodash --> [ package.json ] --> "dependencies": {
     "lodash": "^4.17.21"
   } && also created [ package-lock.json ] file .
 
