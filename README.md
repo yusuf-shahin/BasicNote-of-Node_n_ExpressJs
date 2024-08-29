@@ -2,7 +2,7 @@
 
 - In this repository, I’ve documented my journey through learning Node.js and Express.js by compiling a comprehensive tutorial.
 
-### The importent shortkey of Node :-
+**The importent shortkey of Node :-**
 
 - GLOBALS === NO WINDOW !!!! There is no window object in node .
 - **dirname - console.log(dirname)** -> path to current directory .
@@ -13,10 +13,12 @@
 
 ### Modules in node js :-
 
-##### What is module ?
+- **What are module ?**
 
 - Modules in Node.js allow you to encapsulate code into separate files, making it reusable and maintainable. Each module can export only what is necessary, keeping the rest private and hidden. This helps organize your code and reduces potential conflicts.
 - Every file is module (by default) .
+
+- [Click this article to learn details](https://www.freecodecamp.org/news/what-are-node-modules/)
 
 If we **console.log(module)** , we find that is our terminal :-
 
@@ -39,7 +41,7 @@ If we **console.log(module)** , we find that is our terminal :-
 - using **require()** method to import the module as obj.
 - _- in nodejs we use require instead of import method ._
 
-##### How we use modules in node ?
+**How we use local modules in node ?**
 
 - First we create three basic js file
 
@@ -136,7 +138,7 @@ sayHello(pName); //# hello there bob
 //? If we have a function inside of module that we invoke , that code will run , even though we dont assain it in a varible
 ```
 
-## What is os module ?
+### What is os module ?
 
 ##### **The node :** os module provides operating system-related utility methods and properties. It can be accessed using: import os from 'node:os'; const os = require('os'); copy.
 
@@ -168,29 +170,57 @@ const currentOS = {
 console.log(currentOS);
 ```
 
-##### what is path-module ?
+### What is path-module ?
 
 - The Path module provides a way of working with directories and file paths.
+- [Click here to learn more](https://mirzaleka.medium.com/working-with-paths-in-node-js-447cd0f2ec56)
 
 ```js
 const path = require("path");
 
-console.log(path.sep); //# ---> "\"
+console.log(path.sep); //# ---> \
 
-const filePath = path.join("/content/", "subfolder", "test.txt");
-console.log(filePath); //# ---> "\content\subfolder\test.txt"
+const filePath = path.join("/content/", "subfolder", "test.txt", "nft.txt");
+//# "/content/" + "subfolder" + "test.txt" (join the path)
+console.log(filePath); //# ---> \content\subfolder\test.txt\nft.txt
+//? although nft.txt file dose not exist
 
 const base = path.basename(filePath);
-console.log(base); //# ---> test.txt
+console.log(base); //# ---> nft.txt (last file of the path)
 
-const absolute = path.resolve(__dirname, "content", "subfolder", "test.txt");
-console.log(absolute);
-//# ---> "C:\Users\DFIT\Desktop\Node Basics\concept of node.js\content\subfolder\test.txt"
+console.log(__dirname); //# C:\Users\DFIT\Desktop\Node Basics\concept of node.js (current dir)
+console.log(__filename); //# C:\Users\DFIT\Desktop\Node Basics\concept of node.js\09-path-module.js (current dir + file name)
+
+const absolute = path.resolve(
+  __dirname,
+  "content",
+  "subfolder",
+  "test.txt",
+  "nft.txt"
+);
+console.log(absolute); //# ---> C:\Users\DFIT\Desktop\Node Basics\concept of node.js\content\subfolder\test.txt\nft.txt
 ```
 
-## Node.js as a File Server ("fs") :-
+**Join Paths**
+You can combine paths in one of two ways :
 
-#### The Node.js file system module allows you to work with the file system on your computer.
+- `path.join()`
+- `path.resolve()`
+
+The difference between the two is that **path.resolve()** returns an absolute path, while **path.join()** just joins paths like strings.
+
+```js
+console.log("joinedPath :>> ", joinedPath);
+// output: joinedPath :>>  ..\http\http.js
+
+console.log("resolvedPath :>> ", resolvedPath);
+// output: resolvedPath :>>  Root-Directory:\folder1\http\http.js
+```
+
+### What is "fs" module ?
+
+- Node.js as a File Server ("fs") :-
+- **The Node.js file system module allows you to work with the file system on your computer.**
 
 - To include the File System module, use the **require()** method:
 
@@ -202,7 +232,7 @@ Common use for the File System module:
 - Delete files
 - Rename files
 
-##### fs-sync approach :-
+**fs-sync approach :-**
 
 - [What is Node JS fs.readFileSync() Method ?](https://www.geeksforgeeks.org/node-js-fs-readfilesync-method/)
 
@@ -232,7 +262,7 @@ writeFileSync(
 
 - _sync approach --> "start" --> {rading file --> writing file} --> "done with this task" --> "starting the next one"_
 
-##### fs-async approach :-
+**fs-async approach :-**
 
 - [What is Node JS fs.readFile() Method ?](https://www.geeksforgeeks.org/node-js-fs-readfile-method/)
 
@@ -277,7 +307,7 @@ console.log("starting next task");
 
 - _async approach --> "start" --> "starting next task" --> {rading file --> writing file} --> "done with this task"._
 
-## In node.js HTTP modules :-
+### What is HTTP module in node ?
 
 - Node.js has a built-in module called HTTP, which allows Node.js to transfer data over the Hyper Text Transfer Protocol (HTTP).
 - The HTTP module creates an HTTP server that listens to server ports and gives a response back to the client.
@@ -313,10 +343,16 @@ server.listen(1997);
 // http://localhost:1997/
 ```
 
-##### Creating Servers:
+**_Creating Servers:_**
 
 - The HTTP module allows you to create a server using the http.createServer() method, which listens for incoming requests and handles them using a callback function.
 
-##### Handling Requests:
+**_Handling Requests:_**
 
 - You can handle HTTP requests and responses by accessing the request and response objects within the callback function of createServer(). The request object contains data from the client, while the response object is used to send data back.
+
+**_url_**
+
+- The URL module is part of the core modules of Nodejs. The URL module is used to splits up a web address into readable parts. The Url module and the query string in nodejs are used in manipulating the URL and its components.
+
+- [Click this article to learn more](`https://www.freecodecamp.org/news/how-to-validate-urls-in-javascript/#:~:text=A%20Uniform%20Resource%20Locator%20(URL,of%20things%20on%20the%20internet.`)
