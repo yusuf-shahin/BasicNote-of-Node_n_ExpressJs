@@ -1,4 +1,4 @@
-# Basic Notes of node.js .
+# Basic concepts of node.js .
 
 - In this repository, I’ve documented my journey through learning Node.js and Express.js by compiling a comprehensive tutorial.
 
@@ -173,19 +173,30 @@ console.log(currentOS);
 ### What is path-module ?
 
 - The Path module provides a way of working with directories and file paths.
-- [Click here to learn more](https://mirzaleka.medium.com/working-with-paths-in-node-js-447cd0f2ec56)
 
 ```js
 const path = require("path");
 
 console.log(path.sep); //# ---> \
 
-const filePath = path.join("/content/", "subfolder", "test.txt", "nft.txt");
+//* path.join()
+const filePathJoin = path.join("/content/", "subfolder", "test.txt", "nft.txt");
 //# "/content/" + "subfolder" + "test.txt" (join the path)
-console.log(filePath); //# ---> \content\subfolder\test.txt\nft.txt
+console.log(filePathJoin); //# ---> \content\subfolder\test.txt\nft.txt
 //? although nft.txt file dose not exist
 
-const base = path.basename(filePath);
+//* path.resolve()
+const filePathResolve = path.resolve(
+  "/content/",
+  "subfolder",
+  "test.txt",
+  "nft.txt"
+);
+//# C:"/content/" + "subfolder" + "test.txt" (return the absolute path)
+console.log(filePathResolve); //# ---> C:\content\subfolder\test.txt\nft.txt
+//? although nft.txt file dose not exist
+
+const base = path.basename(filePathJoin);
 console.log(base); //# ---> nft.txt (last file of the path)
 
 console.log(__dirname); //# C:\Users\DFIT\Desktop\Node Basics\concept of node.js (current dir)
@@ -207,7 +218,7 @@ You can combine paths in one of two ways :
 - `path.join()`
 - `path.resolve()`
 
-The difference between the two is that **path.resolve()** returns an absolute path, while **path.join()** just joins paths like strings.
+The difference between the two is that **path.resolve()** returns an absolute path, while **path.join()** just joins paths like strings But functionality of both are same. but **_path.resolve()_** is prefarable.
 
 ```js
 console.log("joinedPath :>> ", joinedPath);
@@ -216,6 +227,8 @@ console.log("joinedPath :>> ", joinedPath);
 console.log("resolvedPath :>> ", resolvedPath);
 // output: resolvedPath :>>  Root-Directory:\folder1\http\http.js
 ```
+
+- [Click here to learn more](https://mirzaleka.medium.com/working-with-paths-in-node-js-447cd0f2ec56)
 
 ### What is "fs" module ?
 
@@ -232,18 +245,26 @@ Common use for the File System module:
 - Delete files
 - Rename files
 
+**[Learm more to click this Article]**(https://www.freecodecamp.org/news/how-to-read-and-write-files-with-nodejs/#heading-nodejs-fs-module)
+
 **fs-sync approach :-**
 
 - [What is Node JS fs.readFileSync() Method ?](https://www.geeksforgeeks.org/node-js-fs-readfilesync-method/)
 
 ```js
-//* destructuring from "fs" (sync)
+// const fs = require("fs");
+// console.log(fs.readFileSync);
+
+//* do the same thing by obj destructuring from "fs"
 const { readFileSync, writeFileSync } = require("fs"); //# file-system
+console.log(readFileSync);
+
 console.log("start");
 
 //* in "subfolder" I already create two files, first.txt and second.txt
 const first = readFileSync("./content/first.txt", "utf8");
 const second = readFileSync("./content/second.txt", "utf8");
+
 //# fs.readFileSync() method, we can synchronously read files. It is used to read the file and return its content.
 
 //* read the file from those folder
@@ -256,11 +277,13 @@ writeFileSync(
   //# write text(value) on that file
   `Here is the result : ${first}, ${second}`
 );
-// console.log('done with this task')
-// console.log('starting the next one')
+console.log("done with this task");
+console.log("starting the next one");
+
+//? sync approach --> "start" --> {rading file --> "Hello this is first text file, Yusuf... :)" --> "Hello this is second text file , Shahin" --> writing file} --> "done with this task" --> "starting the next one"
 ```
 
-- _sync approach --> "start" --> {rading file --> writing file} --> "done with this task" --> "starting the next one"_
+- **sync approach** --> _"start" --> {rading file --> writing file} --> "done with this task" --> "starting the next one"_
 
 **fs-async approach :-**
 
@@ -339,9 +362,11 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(1997);
-// http://localhost:1997/
+//# show everythings in browser :-
+server.listen(9000);
 ```
+
+- `http://localhost:9000/`
 
 **_Creating Servers:_**
 
@@ -351,8 +376,8 @@ server.listen(1997);
 
 - You can handle HTTP requests and responses by accessing the request and response objects within the callback function of createServer(). The request object contains data from the client, while the response object is used to send data back.
 
-**_url_**
+**_URL_**
 
 - The URL module is part of the core modules of Nodejs. The URL module is used to splits up a web address into readable parts. The Url module and the query string in nodejs are used in manipulating the URL and its components.
 
-- [Click this article to learn more](`https://www.freecodecamp.org/news/how-to-validate-urls-in-javascript/#:~:text=A%20Uniform%20Resource%20Locator%20(URL,of%20things%20on%20the%20internet.`)
+- [Click this article to learn more](https://www.freecodecamp.org/news/how-to-validate-urls-in-javascript/#:~:text=A%20Uniform%20Resource%20Locator%20)
