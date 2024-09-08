@@ -1,9 +1,9 @@
 // CommonJS, every file is module (by default)
 // Modules - Encapsulated Code (only share minimum)
+
 const names = require("./04-names");
 // console.log(names);//#  { john: 'john', peter: 'peter' }
-
-//* same thing in different way by obj distructuring :-
+//? same thing in different way by obj distructuring :-
 // const {john, peter} = require("./04-names");
 
 const sayHello = require("./05-utils");
