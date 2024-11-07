@@ -1,6 +1,6 @@
 # Basic concepts of node.js .
 
-- ### [How to Get Started with NodeJS – a Handbook for Beginners](https://www.freecodecamp.org/news/get-started-with-nodejs/#heading-what-is-node)
+### [How to Get Started with NodeJS – a Handbook for Beginners](https://www.freecodecamp.org/news/get-started-with-nodejs/#heading-what-is-node)
 
 - In this repository, I’ve documented my journey through learning Node.js and Express.js by compiling a comprehensive tutorial.
 
@@ -59,7 +59,7 @@ If we **console.log(module)** , we find that is our terminal :-
 
 - First we create three basic js file
 
-**names.js**
+**names.js** (export module as object)
 
 ```js
 // local
@@ -76,7 +76,7 @@ module.exports = { john, peter }
 //# { john: 'john', peter: 'peter' }
 ```
 
-**utils.js**
+**utils.js** ( default export )
 
 ```js
 //* defaault export
@@ -124,14 +124,42 @@ addValues()
 
 // CommonJS, every file is module (by default)
 // Modules - Encapsulated Code (only share minimum)
+
+// ========== ** 04-name.js ** ==============
+
+// ================
+// const john = "john"
+// const peter = "peter"
+// module.exports = { john, peter }
+// ================
+
 const names = require("./04-names")
 // console.log(names);//#  { john: 'john', peter: 'peter' }
 
 //* same thing in different way by obj distructuring :-
 // const {john, peter} = require("./04-names");
 
+// ========== ** 05-utils.js ** ==============
+
+// ===============
+// module.exports = (name) => {
+//   console.log(`Hello there ${name}`)
+// }
+// ===============
+
 const sayHello = require("./05-utils")
 console.log(sayHello) //# //# [Function (anonymous)]
+
+// ========== ** 06-alternative-flavor.js ** ==============
+
+// =================
+// module.exports.items = ["item1", "item2"]
+// const person = {
+//   name: "bob",
+// }
+
+// module.exports.singlePerson = person
+// =================
 
 const data = require("./06-alternative-flavor")
 // console.log(data);
@@ -145,6 +173,9 @@ sayHello("susan") //# hello there susan
 sayHello(names.john) //# hello there john
 sayHello(pName) //# hello there bob
 
+// ==============
+// ==============
+
 //* mind-grenede :-
 // require("./07-mind-grenade"); //# the sum is : 15
 //! What the reason ? we dont export the module from "./07-mind-grenade"... how can we find them ?
@@ -155,7 +186,7 @@ sayHello(pName) //# hello there bob
 ### Built-in Modules
 
 - [http](https://github.com/yusuf-shahin/Basics-of-node-js?tab=readme-ov-file#what-is-http-module-in-node-)
-- url
+- [url](https://www.freecodecamp.org/news/url-definition/#:~:text=URLs%20are%20sometimes%20called%20web,%3A%2F%2Fwww.freecodecamp.org%2F)
 - [path](https://github.com/yusuf-shahin/Basics-of-node-js?tab=readme-ov-file#what-is-path-module-)
 - [fs](https://github.com/yusuf-shahin/Basics-of-node-js?tab=readme-ov-file#what-is-fs-module-)
 - [os](https://github.com/yusuf-shahin/Basics-of-node-js?tab=readme-ov-file#what-is-os-module-)
