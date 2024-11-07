@@ -1,5 +1,7 @@
 # Basic concepts of node.js .
 
+- ### [How to Get Started with NodeJS – a Handbook for Beginners](https://www.freecodecamp.org/news/get-started-with-nodejs/#heading-what-is-node)
+
 - In this repository, I’ve documented my journey through learning Node.js and Express.js by compiling a comprehensive tutorial.
 
 **The importent shortkey of Node :-**
@@ -11,6 +13,10 @@
 - module - info about current module (file) .
 - process - info about env where the program is being executed .
 
+## What is node js ?
+
+- [Learn more to click here...](https://www.freecodecamp.org/news/get-started-with-nodejs/)
+
 ### Modules in node js :-
 
 - **What are module ?**
@@ -19,6 +25,12 @@
 - Every file is module (by default) .
 
 - [Click this article to learn details](https://www.freecodecamp.org/news/what-are-node-modules/)
+
+**There are three types of modules in Node.js**
+
+- Local modules
+- Build-in modules
+- Third-party modules
 
 If we **console.log(module)** , we find that is our terminal :-
 
@@ -39,7 +51,7 @@ If we **console.log(module)** , we find that is our terminal :-
 - In module we receive _"export"_ as obj
 - using **module.exports** we add the value of exports.
 - using **require()** method to import the module as obj.
-- _- in nodejs we use require instead of import method ._
+- _in nodejs we use require instead of import method ._
 
 ### Local Modules .
 
